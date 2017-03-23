@@ -26,11 +26,17 @@ class Sidebar extends Component {
               <Link to={'/dashboard'} className="nav-link" activeClassName="active"><i className="icon-speedometer"></i> Dashboard <span className="badge badge-info">NEW</span></Link>
             </li>
             <li className="nav-title">
-              UI Elements
+              Management
             </li>
             <li className={this.activeRoute("/components")}>
-              <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-puzzle"></i> Components</a>
+              <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-puzzle"></i> Exhibition</a>
               <ul className="nav-dropdown-items">
+                <li className="nav-item">
+                  <Link to={'/exhibition/manage'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> Manage</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={'/exhibition/report'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> View Report</Link>
+                </li>
                 <li className="nav-item">
                   <Link to={'/components/buttons'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> Buttons</Link>
                 </li>
@@ -58,7 +64,7 @@ class Sidebar extends Component {
               </ul>
             </li>
             <li className={this.activeRoute("/icons")}>
-              <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-star"></i> Icons</a>
+              <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-star"></i> Booth</a>
               <ul className="nav-dropdown-items">
                 <li className="nav-item">
                   <Link to={'/icons/font-awesome'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Font Awesome</Link>
@@ -76,7 +82,7 @@ class Sidebar extends Component {
             </li>
             <li className="divider"></li>
             <li className="nav-title">
-              Extras
+              Account
             </li>
             <li className="nav-item nav-dropdown">
               <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-star"></i> Pages</a>

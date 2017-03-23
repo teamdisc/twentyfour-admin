@@ -23,6 +23,8 @@ import Page404 from './views/Pages/Page404/'
 import Page500 from './views/Pages/Page500/'
 import Widgets from './views/Widgets/'
 
+import ManageExhibition from './views/Exhibition/ManageExhibition'
+
 export default (
   <Router history={hashHistory}>
     <Route path="/" name="Home" component={Full}>
@@ -39,6 +41,12 @@ export default (
         <Route path="tables" name="Tables" component={Tables}/>
         <Route path="tabs" name="Tabs" component={Tabs}/>
       </Route>
+
+      <Route path="exhibition/" name="Exhibition">
+        <IndexRoute component={ManageExhibition}/>
+        <Route path="manage" name="Manage" component={ManageExhibition}/>
+      </Route>
+
       <Route path="icons/" name="Icons">
         <IndexRoute component={FontAwesome}/>
         <Route path="font-awesome" name="Font Awesome" component={FontAwesome}/>
