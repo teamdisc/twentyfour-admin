@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import {InputTitle} from './BuildingBlocks/BuildingBlocks';
 import MapForm from './MapForm/MapForm';
+import PreviewForm from './PreviewForm/PreviewForm';
 
 class ManageExhibition extends Component {
+
+  handleOnSubmit = (type, imagePath) => {
+    //todo: handle post
+  }
 
   render() {
     return (
@@ -18,7 +23,7 @@ class ManageExhibition extends Component {
                 <form action="" method="post" encType="multipart/form-data" className="form-horizontal ">
 
                   <InputTitle title="Name" helpText="">
-                    <input type="text" id="text-input" name="text-input" className="form-control" placeholder="Enter your exhibition name"/>
+                    <input type="text" id="name-input" name="text-input" className="form-control" placeholder="Enter your exhibition name"/>
                   </InputTitle>
 
                   <InputTitle title="Description">
@@ -81,6 +86,21 @@ class ManageExhibition extends Component {
 
           <div className="col-md-6">
 
+            <PreviewForm
+              title="Poster"
+              imagePath=""
+              onSubmit={imagePath => this.handleOnSubmit('poster', imagePath)}
+            />
+            <PreviewForm
+              title="Map"
+              imagePath=""
+              onSubmit={imagePath => this.handleOnSubmit('map', imagePath)}
+            />
+            <PreviewForm
+              title="Agenda"
+              imagePath=""
+              onSubmit={imagePath => this.handleOnSubmit('agenda', imagePath)}
+            />
             <MapForm />
 
             <div className="card">

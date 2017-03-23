@@ -13,7 +13,7 @@ class MapForm extends Component {
         <form action="" method="post">
           <div className="card-block">
             <InputTitle title="Map location" shouldNewLine>
-
+              
             </InputTitle>
           </div>
         </form>

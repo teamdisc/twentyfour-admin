@@ -8,7 +8,7 @@ export const InputTitle = ({title, helpText, children, shouldNewLine}) => {
         htmlFor="text-input">
         {title}
       </label>
-      <div className="col-md-9">
+      <div className={!shouldNewLine && "col-md-9"}>
         {children}
         <span className="help-block">{helpText}</span>
       </div>
