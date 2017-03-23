@@ -23,7 +23,7 @@
     "reactstrap": "4.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start | gulp",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
