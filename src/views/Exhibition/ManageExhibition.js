@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {InputTitle} from './BuildingBlocks/BuildingBlocks';
+import { InputTitle } from './BuildingBlocks/BuildingBlocks';
 import MapForm from './MapForm/MapForm';
 import PreviewForm from './PreviewForm/PreviewForm';
+import ExhibitionForm from './ExhibitionForm/ExhibitionForm';
 
 class ManageExhibition extends Component {
 
@@ -15,51 +16,7 @@ class ManageExhibition extends Component {
         <div className="row">
           <div className="col-md-6">
 
-            <div className="card">
-              <div className="card-header">
-                <strong>Exhibition</strong> form
-              </div>
-              <div className="card-block">
-                <form action="" method="post" encType="multipart/form-data" className="form-horizontal ">
-
-                  <InputTitle title="Name" helpText="">
-                    <input type="text" id="name-input" name="text-input" className="form-control" placeholder="Enter your exhibition name"/>
-                  </InputTitle>
-
-                  <InputTitle title="Description">
-                      <textarea id="textarea-input" name="textarea-input" rows="9" className="form-control" placeholder="Detail of your exhibition..." />
-                  </InputTitle>
-
-                  <InputTitle title="Category">
-                    <select id="select" name="select" className="form-control" size="1">
-                      <optgroup label="Please select your category">
-                        <option value="1">Home & Furniture</option>
-                        <option value="2">Travel & Tourism</option>
-                        <option value="3">Technology</option>
-                      </optgroup>
-                    </select>
-                  </InputTitle>
-
-
-                  <div className="form-group row">
-                    <label className="col-md-3 form-control-label" htmlFor="file-input">File input</label>
-                    <div className="col-md-9">
-                      <input type="file" id="file-input" name="file-input"/>
-                    </div>
-                  </div>
-                  <div className="form-group row">
-                    <label className="col-md-3 form-control-label" htmlFor="file-multiple-input">Multiple File input</label>
-                    <div className="col-md-9">
-                      <input type="file" id="file-multiple-input" name="file-multiple-input" multiple/>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div className="card-footer">
-                <button type="submit" className="btn btn-sm btn-primary"><i className="fa fa-dot-circle-o"></i> Submit</button>
-                <button type="reset" className="btn btn-sm btn-danger"><i className="fa fa-ban"></i> Reset</button>
-              </div>
-            </div>
+            <ExhibitionForm />
 
             <div className="card">
               <div className="card-header">

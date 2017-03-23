@@ -22,7 +22,7 @@ class PreviewForm extends Component {
   }
 
   handleInputUrlChange = (event) => {
-    this.setState({imagePath: event.target.value})
+    this.setState({imageUrl: event.target.value})
   }
 
   handleOnSubmit = (event) => {
@@ -30,7 +30,7 @@ class PreviewForm extends Component {
   }
 
   handleOnReset = () => {
-    this.setState({imagePath: '', imageFile: null})
+    this.setState({imageUrl: '', imageFile: null})
   }
 
   handleOnSelect = (event) => {
