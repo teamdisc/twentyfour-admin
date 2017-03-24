@@ -24,7 +24,7 @@ class ExhibitionForm extends Component {
             </Input>
 
             <Input title="Description">
-                <textarea id="textarea-input" name="textarea-input" rows="9" className="form-control" placeholder="Detail of your exhibition..." />
+              <textarea id="textarea-input" name="textarea-input" rows="6" className="form-control" placeholder="Detail of your exhibition..." />
             </Input>
 
             <Input title="Category">

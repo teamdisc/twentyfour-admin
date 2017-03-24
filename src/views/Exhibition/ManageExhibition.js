@@ -4,6 +4,7 @@ import { Input } from './BuildingBlocks/BuildingBlocks';
 import MapForm from './MapForm/MapForm';
 import PreviewForm from './PreviewForm/PreviewForm';
 import ExhibitionForm from './ExhibitionForm/ExhibitionForm';
+import ContactForm from './ContactForm/ContactForm';
 
 class ManageExhibition extends Component {
 
@@ -21,30 +22,9 @@ class ManageExhibition extends Component {
       <div className="animated fadeIn">
         <div className="row">
           <div className="col-md-6">
-
             <ExhibitionForm />
-
-            <div className="card">
-              <div className="card-header">
-                <strong>Inline</strong> Form
-              </div>
-              <div className="card-block">
-                <form action="" method="post" className="form-inline">
-                  <div className="form-group">
-                    <label htmlFor="exampleInputName2">Name</label>
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleInputEmail2">Email</label>
-                    <input type="email" className="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"/>
-                  </div>
-                </form>
-              </div>
-              <div className="card-footer">
-                <button type="submit" className="btn btn-sm btn-primary"><i className="fa fa-dot-circle-o"></i> Submit</button>
-                <button type="reset" className="btn btn-sm btn-danger"><i className="fa fa-ban"></i> Reset</button>
-              </div>
-            </div>
+            <ContactForm />
+            <MapForm />
           </div>
 
           <div className="col-md-6">
@@ -64,7 +44,6 @@ class ManageExhibition extends Component {
               imagePath=""
               onSubmit={imagePath => this.handleOnSubmit('agendaUrl', imagePath)}
             />
-            <MapForm />
 
             <div className="card">
               <div className="card-header">
