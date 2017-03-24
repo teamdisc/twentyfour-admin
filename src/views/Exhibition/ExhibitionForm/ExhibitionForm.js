@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import { InputTitle } from '../BuildingBlocks/BuildingBlocks';
+import { Input } from '../BuildingBlocks/BuildingBlocks';
 import { DateRangePicker } from 'react-dates';
 
 class ExhibitionForm extends Component {
+
+  state = {
+    startDate: null,
+    endDate: null,
+    focusedInput: null
+  }
 
   render() {
     return (
@@ -13,15 +19,15 @@ class ExhibitionForm extends Component {
         <div className="card-block">
           <form action="" method="post" encType="multipart/form-data" className="form-horizontal ">
 
-            <InputTitle title="Name" helpText="">
+            <Input title="Name" helpText="">
               <input type="text" id="name-input" name="text-input" className="form-control" placeholder="Enter your exhibition name"/>
-            </InputTitle>
+            </Input>
 
-            <InputTitle title="Description">
+            <Input title="Description">
                 <textarea id="textarea-input" name="textarea-input" rows="9" className="form-control" placeholder="Detail of your exhibition..." />
-            </InputTitle>
+            </Input>
 
-            <InputTitle title="Category">
+            <Input title="Category">
               <select id="select" name="select" className="form-control" size="1">
                 <optgroup label="Please select your category">
                   <option value="1">Home & Furniture</option>
@@ -29,14 +35,21 @@ class ExhibitionForm extends Component {
                   <option value="3">Technology</option>
                 </optgroup>
               </select>
-            </InputTitle>
+            </Input>
 
-            <InputTitle title="Timerange">
+            <Input title="Dates">
               <DateRangePicker
-                startDate={null}
-                endDate={null}
+                startDate={this.state.startDate}
+                endDate={this.state.endDate}
+                onDatesChange={({startDate, endDate}) => {
+                  console.log(startDate);
+                  console.log(endDate);
+                  this.setState({startDate, endDate})
+                }}
+                focusedInput={this.state.focusedInput}
+                onFocusChange={focusedInput => this.setState({focusedInput})}
               />
-            </InputTitle>
+            </Input>
 
           </form>
         </div>

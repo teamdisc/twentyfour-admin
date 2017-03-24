@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {InputTitle} from '../BuildingBlocks/BuildingBlocks';
+import { Input } from '../BuildingBlocks/BuildingBlocks';
 import _ from 'lodash';
 
 class PreviewForm extends Component {
@@ -26,7 +26,12 @@ class PreviewForm extends Component {
   }
 
   handleOnSubmit = (event) => {
-    this.props.onSubmit(this.state.imagePath)
+    const {imageUrl, imageFile} = this.state
+    if(imageFile) {
+      this.props.onSubmit(imageFile.file)
+    } else {
+      this.props.onSubmit(imageUrl)
+    }
   }
 
   handleOnReset = () => {
@@ -67,7 +72,7 @@ class PreviewForm extends Component {
               />
             </div>
             <div className="col-md-8">
-              <InputTitle title={`${title} URL`} shouldNewLine>
+              <Input title={`${title} URL`} shouldNewLine>
                 <input
                   className="form-control"
                   type="url"
@@ -77,8 +82,8 @@ class PreviewForm extends Component {
                   value={imageUrl}
                   onChange={this.handleInputUrlChange}
                 />
-              </InputTitle>
-              <InputTitle title="Upload Photo">
+              </Input>
+              <Input title="Upload Photo">
                 <input
                   className="input-file"
                   type="file"
@@ -90,7 +95,7 @@ class PreviewForm extends Component {
                   <i className="fa fa-upload"> </i>
                   {(imageFile && imageFile.name) || 'Choose a file'}
                 </label>
-              </InputTitle>
+              </Input>
             </div>
           </div>
         </form>

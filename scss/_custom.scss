@@ -33,3 +33,29 @@
 .input-file + label i {
   padding-right: 6px;
 }
+
+//
+
+.DateRangePickerInput {
+
+  input {
+    cursor: pointer;
+  }
+
+  .DateInput {
+    font-size: 14px;
+  }
+
+  .DateInput__display-text--focused {
+    background-color: lighten($brand-primary, 5%);
+    border-color: lighten($brand-primary, 5%);
+    color: white;
+  }
+
+  .DateRangePickerInput__arrow {
+    svg {
+      height: 20px;
+    }
+  }
+
+}

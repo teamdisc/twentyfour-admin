@@ -1,6 +1,6 @@
 {
-  "name": "CoreUI",
-  "version": "1.0.0-alpha.4",
+  "name": "24Admin",
+  "version": "1.0.0",
   "private": true,
   "homepage": ".",
   "devDependencies": {

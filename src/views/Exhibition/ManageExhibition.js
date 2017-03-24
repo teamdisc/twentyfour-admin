@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { InputTitle } from './BuildingBlocks/BuildingBlocks';
+import axios from 'axios';
+import { Input } from './BuildingBlocks/BuildingBlocks';
 import MapForm from './MapForm/MapForm';
 import PreviewForm from './PreviewForm/PreviewForm';
 import ExhibitionForm from './ExhibitionForm/ExhibitionForm';
@@ -7,7 +8,12 @@ import ExhibitionForm from './ExhibitionForm/ExhibitionForm';
 class ManageExhibition extends Component {
 
   handleOnSubmit = (type, imagePath) => {
-    //todo: handle post
+    axios.post('http://161.246.5.227:8080/exhibition/2/update')
+    .then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log(error);
+    })
   }
 
   render() {
@@ -46,17 +52,17 @@ class ManageExhibition extends Component {
             <PreviewForm
               title="Poster"
               imagePath=""
-              onSubmit={imagePath => this.handleOnSubmit('poster', imagePath)}
+              onSubmit={imagePath => this.handleOnSubmit('posterUrl', imagePath)}
             />
             <PreviewForm
               title="Map"
               imagePath=""
-              onSubmit={imagePath => this.handleOnSubmit('map', imagePath)}
+              onSubmit={imagePath => this.handleOnSubmit('mapUrl', imagePath)}
             />
             <PreviewForm
               title="Agenda"
               imagePath=""
-              onSubmit={imagePath => this.handleOnSubmit('agenda', imagePath)}
+              onSubmit={imagePath => this.handleOnSubmit('agendaUrl', imagePath)}
             />
             <MapForm />
 

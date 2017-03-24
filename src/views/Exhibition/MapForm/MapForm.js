@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import {GoogleMap, withGoogleMap} from 'react-google-maps';
-import {InputTitle} from '../BuildingBlocks/BuildingBlocks';
+import { Input } from '../BuildingBlocks/BuildingBlocks';
 
 class MapForm extends Component {
 
@@ -12,9 +12,9 @@ class MapForm extends Component {
         </div>
         <form action="" method="post">
           <div className="card-block">
-            <InputTitle title="Map location" shouldNewLine>
-              
-            </InputTitle>
+            <Input title="Map location" shouldNewLine>
+
+            </Input>
           </div>
         </form>
 

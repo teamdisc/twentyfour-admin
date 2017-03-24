@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const InputTitle = ({title, helpText, children, shouldNewLine}) => {
+export const Input = ({title, helpText, children, shouldNewLine}) => {
   return (
     <div className={shouldNewLine ? "form-group" : "form-group row"}>
       <label
