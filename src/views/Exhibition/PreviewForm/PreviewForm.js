@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Input } from '../BuildingBlocks/BuildingBlocks';
+import { URLInput, FileInput, PreviewImage } from '../BuildingBlocks/BuildingBlocks';
 import _ from 'lodash';
 
 class PreviewForm extends Component {
-
 
   constructor(props) {
     super(props);
@@ -34,10 +33,6 @@ class PreviewForm extends Component {
     }
   }
 
-  handleOnReset = () => {
-    this.setState({imageUrl: '', imageFile: null})
-  }
-
   handleOnSelect = (event) => {
     event.preventDefault();
     let reader = new FileReader();
@@ -64,7 +59,7 @@ class PreviewForm extends Component {
         <form action="" method="post">
           <div className="card-block row">
             <div className="col-md-4">
-              <img
+              <PreviewImage
                 src={(imageFile && imageFile.file) || imageUrl}
                 onError={this.handleImageError}
                 alt="Preview"
@@ -72,7 +67,12 @@ class PreviewForm extends Component {
               />
             </div>
             <div className="col-md-8">
-              <Input title={`${title} URL`} shouldNewLine>
+              <URLInput
+                title={`${title} URL`}
+                value={imageUrl}
+                onChange={this.handleInputUrlChange}
+              />
+              {/* <Input title={`${title} URL`} shouldNewLine>
                 <input
                   className="form-control"
                   type="url"
@@ -82,8 +82,14 @@ class PreviewForm extends Component {
                   value={imageUrl}
                   onChange={this.handleInputUrlChange}
                 />
-              </Input>
-              <Input title="Upload Photo">
+              </Input> */}
+              <FileInput
+                title="Upload photo"
+                name={title}
+                value={imageFile}
+                onFileSelect={this.handleOnSelect}
+              />
+              {/* <Input title="Upload Photo">
                 <input
                   className="input-file"
                   type="file"
@@ -95,7 +101,7 @@ class PreviewForm extends Component {
                   <i className="fa fa-upload"> </i>
                   {(imageFile && imageFile.name) || 'Choose a file'}
                 </label>
-              </Input>
+              </Input> */}
             </div>
           </div>
         </form>
@@ -103,7 +109,7 @@ class PreviewForm extends Component {
           <button type="submit" className="btn btn-sm btn-primary" onClick={this.handleOnSubmit}>
             <i className="fa fa-dot-circle-o" /> Submit
           </button>
-          <button type="reset" className="btn btn-sm btn-danger" onClick={this.handleOnReset}>
+          <button type="reset" className="btn btn-sm btn-danger" onClick={() => this.setState({imageUrl: '', imageFile: null})}>
             <i className="fa fa-ban" /> Reset
           </button>
         </div>

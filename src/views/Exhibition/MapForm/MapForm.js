@@ -18,7 +18,7 @@ const INPUT_STYLE = {
 const GoogleMapForm = _.flowRight(withScriptjs, withGoogleMap)(props => (
   <GoogleMap
     ref={props.onMapLoad}
-    defaultZoom={15}
+    defaultZoom={14}
     defaultCenter={{lat: -25.36882, lng: 131.044922}}
     center={props.center}
     onClick={props.onMapClick}
@@ -50,9 +50,6 @@ class MapForm extends Component {
 
   handleMapLoad = map => {
     this._mapComponent = map
-    if(map) {
-      console.log(map.getZoom());
-    }
   }
 
   handleMapClick = event => {
@@ -71,21 +68,30 @@ class MapForm extends Component {
 
   handlePlacesChanged = () => {
     const places = this._searchBox.getPlaces();
-    // const marker = places.map(place => {
-    //   position: place.geometry.location
-    // });
     const marker = {
+      name: places[0].name,
       position: places[0].geometry.location
     }
     const mapCenter = marker.position && this.state.center;
-    console.log(mapCenter);
     this.setState({
+      location: marker.name,
       center: mapCenter,
       marker
     })
   }
 
+  handleOnSubmit = () => {
+    const {marker, location} = this.state;
+    const data = {
+      location: location,
+      latitude: marker.position.lat(),
+      longtitude: marker.position.lng()
+    }
+    this.props.onSubmit(data);
+  }
+
   render() {
+    const {location} = this.state;
     return (
       <div className="card">
         <div className="card-header">
@@ -95,7 +101,14 @@ class MapForm extends Component {
           <div className="card-block">
 
             <Input title="Map location" shouldNewLine>
-              <input type="text" id="location-input" name="text-input" className="form-control" placeholder="Enter your contact name..."/>
+              <input
+                type="text"
+                id="location-input"
+                name="text-input"
+                value={location}
+                onChange={e => this.setState({location: e.target.value})}
+                className="form-control"
+                placeholder="Enter your location name..."/>
             </Input>
 
             <Input title="Google map" helpText="Mark your location on the Google map" shouldNewLine>
@@ -110,14 +123,15 @@ class MapForm extends Component {
                 center={this.state.marker.position}
                 onSearchBoxMounted={this.handleSearchBoxMounted}
                 onPlacesChanged={this.handlePlacesChanged}
-                // onMarkerRightClick={this.handleMarkerRightClick}
               />
             </Input>
 
           </div>
         </form>
         <div className="card-footer">
-          <button type="submit" className="btn btn-sm btn-primary"><i className="fa fa-dot-circle-o"></i> Submit</button>
+          <button type="submit" className="btn btn-sm btn-primary" onClick={this.handleOnSubmit}>
+            <i className="fa fa-dot-circle-o"></i> Submit
+            </button>
           <button type="reset" className="btn btn-sm btn-danger"><i className="fa fa-ban"></i> Reset</button>
         </div>
       </div>

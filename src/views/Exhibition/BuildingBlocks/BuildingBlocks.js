@@ -16,6 +16,45 @@ export const Input = ({title, helpText, children, shouldNewLine}) => {
   )
 }
 
+export const PreviewImage = (props) => (
+  <img
+    src={props.src}
+    onError={props.onError}
+    alt="Preview"
+    {...props}
+  />
+)
+
+export const URLInput = ({title, value, onChange}) => (
+  <Input title={title} shouldNewLine>
+    <input
+      className="form-control"
+      type="url"
+      id={`${title.toLowerCase()}-url-input`}
+      name="url-input"
+      placeholder="Enter URL of your photo..."
+      value={value}
+      onChange={onChange}
+    />
+  </Input>
+)
+
+export const FileInput = ({title, name, value, onFileSelect}) => (
+  <Input title={title}>
+    <input
+      className="input-file"
+      type="file"
+      id={`${name.toLowerCase()}-file-input`}
+      name="file-input"
+      onChange={onFileSelect}
+    />
+  <label htmlFor={`${name.toLowerCase()}-file-input`}>
+    <i className="fa fa-upload"> </i>
+    {(value && value.name) || 'Choose a file'}
+  </label>
+  </Input>
+)
+
 //MARK:- not ready-use!
 export const Card = ({headerChildren, children, footerChildren}) => {
   return (
