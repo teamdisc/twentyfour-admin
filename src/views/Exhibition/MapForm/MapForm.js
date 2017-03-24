@@ -6,22 +6,30 @@ import SearchBox from 'react-google-maps/lib/places/SearchBox';
 import withScriptjs from 'react-google-maps/lib/async/withScriptjs'
 import { Input } from '../BuildingBlocks/BuildingBlocks';
 
+const INPUT_STYLE = {
+  height: 30,
+  width: '36%',
+  minWidth: 160,
+  padding: 5,
+  marginRight: 10,
+  marginTop: 10,
+}
+
 const GoogleMapForm = _.flowRight(withScriptjs, withGoogleMap)(props => (
   <GoogleMap
     ref={props.onMapLoad}
-    defaultZoom={3}
+    defaultZoom={15}
     defaultCenter={{lat: -25.36882, lng: 131.044922}}
-    // center={props.center}
-    // onBoundsChanged={props.onBoundsChanged}
+    center={props.center}
     onClick={props.onMapClick}
   >
-    {/* <SearchBox
+    <SearchBox
       ref={props.onSearchBoxMounted}
-      bounds={props.bounds}
       controlPosition={google.maps.ControlPosition.TOP_RIGHT}
       onPlacesChanged={props.onPlacesChanged}
       inputPlaceholder="Enter you landmark name..."
-    /> */}
+      inputStyle={INPUT_STYLE}
+    />
     <Marker {...props.marker} />
   </GoogleMap>
 ));
@@ -57,13 +65,6 @@ class MapForm extends Component {
     })
   }
 
-  handleBoundsChanged = () => {
-    this.setState({
-      bounds: this._map.getBounds(),
-      center: this._map.getCenter()
-    });
-  }
-
   handleSearchBoxMounted = searchBox => {
     this._searchBox = searchBox;
   }
@@ -97,20 +98,18 @@ class MapForm extends Component {
               <input type="text" id="location-input" name="text-input" className="form-control" placeholder="Enter your contact name..."/>
             </Input>
 
-            <Input title="Google map" shouldNewLine>
+            <Input title="Google map" helpText="Mark your location on the Google map" shouldNewLine>
               <GoogleMapForm
                 googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZlu16c8bDQJpzZIVMD8KsED42Y1djKQg&libraries=geometry,drawing,places"
                 loadingElement={<div />}
-                containerElement={<div style={{ height: '400px' }} />}
-                mapElement={<div style={{ height: '400px' }} />}
+                containerElement={<div style={{ height: '360px' }} />}
+                mapElement={<div style={{ height: '360px' }} />}
                 onMapLoad={this.handleMapLoad}
                 onMapClick={this.handleMapClick}
                 marker={this.state.marker}
-                // center={this.state.center}
-                // bounds={this.state.bounds}
-                // onSearchBoxMounted={this.handleSearchBoxMounted}
-                // onBoundsChanged={this.handleBoundsChanged}
-                // onPlacesChanged={this.handlePlacesChanged}
+                center={this.state.marker.position}
+                onSearchBoxMounted={this.handleSearchBoxMounted}
+                onPlacesChanged={this.handlePlacesChanged}
                 // onMarkerRightClick={this.handleMarkerRightClick}
               />
             </Input>
