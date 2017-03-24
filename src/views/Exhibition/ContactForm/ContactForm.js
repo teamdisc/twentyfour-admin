@@ -19,6 +19,7 @@ class ContactForm extends Component {
       mobileNo: form['contact-tel-input'].value,
       facebook: form['contact-facebook-input'].value,
       facebookUrl: form['contact-facebook-url-input'].value,
+      logoUrl: logoUrl
     }
     this.props.onSubmit(data)
   }

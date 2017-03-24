@@ -24,6 +24,8 @@ import Page500 from './views/Pages/Page500/'
 import Widgets from './views/Widgets/'
 
 import ManageExhibition from './views/Exhibition/ManageExhibition'
+import ManageBooth from './views/Booth/ManageBooth'
+import ExhibitionList from './views/Exhibition/ExhibitionList'
 
 export default (
   <Router history={hashHistory}>
@@ -44,7 +46,13 @@ export default (
 
       <Route path="exhibition/" name="Exhibition">
         <IndexRoute component={ManageExhibition}/>
+        <Route path="list" name="List" component={ExhibitionList}/>
         <Route path="manage" name="Manage" component={ManageExhibition}/>
+      </Route>
+
+      <Route path="booth/" name="Booth">
+        <IndexRoute component={ManageBooth}/>
+        <Route path="manage" name="Manage" component={ManageBooth}/>
       </Route>
 
       <Route path="icons/" name="Icons">

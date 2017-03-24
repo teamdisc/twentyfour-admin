@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Input } from './BuildingBlocks/BuildingBlocks';
 import MapForm from './MapForm/MapForm';
 import PreviewForm from './PreviewForm/PreviewForm';
 import ExhibitionForm from './ExhibitionForm/ExhibitionForm';

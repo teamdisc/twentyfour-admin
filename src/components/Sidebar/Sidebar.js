@@ -38,7 +38,7 @@ class Sidebar extends Component {
                   <Link to={'/exhibition/report'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> View Report</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/components/buttons'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> Buttons</Link>
+                  <Link to={'/exhibition/list'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> List</Link>
                 </li>
                 <li className="nav-item">
                   <Link to={'/components/social-buttons'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> Social Buttons</Link>
@@ -67,7 +67,7 @@ class Sidebar extends Component {
               <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-star"></i> Booth</a>
               <ul className="nav-dropdown-items">
                 <li className="nav-item">
-                  <Link to={'/icons/font-awesome'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Font Awesome</Link>
+                  <Link to={'/booth/manage'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Manage</Link>
                 </li>
                 <li className="nav-item">
                   <Link to={'/icons/simple-line-icons'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Simple Line Icons</Link>
