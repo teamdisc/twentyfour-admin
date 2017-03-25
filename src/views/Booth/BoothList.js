@@ -22,6 +22,7 @@ class BoothList extends Component {
             description: b.description,
             code: b.boothCode,
             logoUrl: b.logoUrl,
+            exhibitionId: b.exhibitionId
           }
         });
         this.setState({booths, fetched: true})
@@ -43,7 +44,7 @@ class BoothList extends Component {
         <td>{booth.description}</td>
         <td>{booth.code}</td>
         <td>
-          <Link to={`/exhibition/${booth.id}/`} style={{color: 'white'}}>
+          <Link to={`/exhibition/${booth.exhibitionId}/booth/${booth.id}`} style={{color: 'white'}}>
             <button type="button" className="btn btn-primary" style={{cursor: 'pointer'}}>
                 <i className="fa fa-edit"></i>&nbsp; Edit
             </button>

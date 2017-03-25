@@ -50,7 +50,7 @@ export default (
         <Route path=":exhibitionId/" name="Manage">
           <IndexRoute component={ManageExhibition}/>
           <Route path="booth" name="Booth" component={BoothList}/>
-          <Route path="manage(/:boothId)" name="Manage" component={ManageBooth}/>
+          <Route path="booth(/:boothId)" name="Manage Booth" component={ManageBooth}/>
         </Route>
       </Route>
 
