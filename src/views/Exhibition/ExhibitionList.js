@@ -45,9 +45,6 @@ class ExhibitionList extends Component {
                 <i className="fa fa-th-list"></i>&nbsp; Booth
             </button>
           </Link>
-          {/* <button type="button" className="btn btn-danger">
-            <i className="fa fa-star"></i>&nbsp; Edit
-          </button> */}
           {/* <span className="badge badge-success">Active</span> */}
         </td>
       </tr>
@@ -62,6 +59,18 @@ class ExhibitionList extends Component {
         <div className="card">
           <div className="card-header">
             <i className="fa fa-align-justify"></i> <strong>Exhibition</strong> List
+            <button className="btn btn-outline-primary"
+              style={{
+                float: 'right',
+                padding: 0,
+                marginTop: -2,
+                marginBottom: -2,
+                width: 25,
+                height: 25
+              }}
+            >
+            +
+            </button>
           </div>
           <div className="card-block">
             <table className="table table-striped">

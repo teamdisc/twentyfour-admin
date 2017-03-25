@@ -56,18 +56,18 @@ class ManageExhibition extends Component {
     this.setState({openModal: !this.state.openModal});
   }
 
-  handleOnSubmit = (type, imagePath) => {
-    const {exhibitionId} = this.props.params;
-    axios.post(`http://161.246.5.227:8080/exhibition/${exhibitionId}/update`, {
-      [type]: imagePath
-    }).then(response => {
-        this.setState({openModal: true})
-    }).catch(error => {
-        console.log(error);
-    })
-  }
+  // handleOnSubmit = (type, imagePath) => {
+  //   const {exhibitionId} = this.props.params;
+  //   axios.post(`http://161.246.5.227:8080/exhibition/${exhibitionId}/update`, {
+  //     [type]: imagePath
+  //   }).then(response => {
+  //       this.setState({openModal: true})
+  //   }).catch(error => {
+  //       console.log(error);
+  //   })
+  // }
 
-  handleOnFormSubmit = (data) => {
+  handleOnSubmit = (data) => {
     const {exhibitionId} = this.props.params;
     axios.post(`http://161.246.5.227:8080/exhibition/${exhibitionId}/update`, data)
       .then(response => {
@@ -102,23 +102,23 @@ class ManageExhibition extends Component {
               category={category}
               startDate={startDate}
               endDate={endDate}
-              onSubmit={data => this.handleOnFormSubmit(data)}
+              onSubmit={data => this.handleOnSubmit(data)}
               categoryList={categoryList}
             />
               <PreviewForm
                 title="Poster"
                 imagePath={posterUrl}
-                onSubmit={imagePath => this.handleOnSubmit('posterUrl', imagePath)}
+                onSubmit={imagePath => this.handleOnSubmit({posterUrl: imagePath})}
               />
               <PreviewForm
                 title="Map"
                 imagePath={mapUrl}
-                onSubmit={imagePath => this.handleOnSubmit('mapUrl', imagePath)}
+                onSubmit={imagePath => this.handleOnSubmit({mapUrl: imagePath})}
               />
               <PreviewForm
                 title="Agenda"
                 imagePath={agendaUrl}
-                onSubmit={imagePath => this.handleOnSubmit('agendaUrl', imagePath)}
+                onSubmit={imagePath => this.handleOnSubmit({agendaUrl: imagePath})}
               />
           </div>
 
@@ -127,7 +127,7 @@ class ManageExhibition extends Component {
             <MapForm
               location={location}
               position={{lat: latitude, lng: longtitude}}
-              onSubmit={data => this.handleOnFormSubmit(data)}
+              onSubmit={data => this.handleOnSubmit(data)}
             />
             <ContactForm onSubmit={data => console.log(data)}/>
 
