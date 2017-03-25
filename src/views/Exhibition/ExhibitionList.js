@@ -1,65 +1,76 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class ExhibitionList extends Component {
 
+  state = {
+    fetched: false,
+    exhibitions: null
+  }
+
+  componentWillMount() {
+    axios.get('http://161.246.5.227:8080/exhibition/')
+      .then(response => {
+        const {content} = response.data;
+        const exhibitions = content.map(ex => {
+          return {
+            id: ex.id,
+            name: ex.exhibitionName,
+            category: ex.category,
+            startDate: ex.startDate,
+            endDate: ex.endDate
+          }
+        });
+        this.setState({exhibitions, fetched: true})
+      })
+  }
+
+  renderItem = (exhibition) => {
+    return (
+      <tr key={`${exhibition.id}-${exhibition.name}`}>
+        <td>{exhibition.id}</td>
+        <td>{exhibition.name}</td>
+        <td>{exhibition.startDate}</td>
+        <td>{exhibition.endDate}</td>
+        <td>{exhibition.category}</td>
+        <td>
+          <button type="button" className="btn btn-primary">
+            <i className="fa fa-edit"></i>&nbsp; Edit
+          </button>
+          {/* <button type="button" className="btn btn-danger">
+            <i className="fa fa-star"></i>&nbsp; Edit
+          </button> */}
+          {/* <span className="badge badge-success">Active</span> */}
+        </td>
+      </tr>
+    )
+  }
+
   render() {
+    if(!this.state.fetched) {
+      return <div />
+    }
+    const {exhibitions} = this.state;
     return (
       <div className="col-md-12">
         <div className="card">
           <div className="card-header">
-            <i className="fa fa-align-justify"></i> Striped Table
+            <i className="fa fa-align-justify"></i> <strong>Exhibition</strong> List
           </div>
           <div className="card-block">
             <table className="table table-striped">
               <thead>
                 <tr>
-                  <th>Username</th>
-                  <th>Date registered</th>
-                  <th>Role</th>
-                  <th>Status</th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Start date</th>
+                  <th>End date</th>
+                  <th>Category</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Yiorgos Avraamu</td>
-                  <td>2012/01/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span className="badge badge-success">Active</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Avram Tarasios</td>
-                  <td>2012/02/01</td>
-                  <td>Staff</td>
-                  <td>
-                    <span className="badge badge-danger">Banned</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Quintin Ed</td>
-                  <td>2012/02/01</td>
-                  <td>Admin</td>
-                  <td>
-                    <span className="badge badge-default">Inactive</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Enéas Kwadwo</td>
-                  <td>2012/03/01</td>
-                  <td>Member</td>
-                  <td>
-                    <span className="badge badge-warning">Pending</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Agapetus Tadeáš</td>
-                  <td>2012/01/21</td>
-                  <td>Staff</td>
-                  <td>
-                    <span className="badge badge-success">Active</span>
-                  </td>
-                </tr>
+                {exhibitions.map(exhibition => this.renderItem(exhibition))}
               </tbody>
             </table>
             <ul className="pagination">
@@ -67,9 +78,6 @@ class ExhibitionList extends Component {
               <li className="page-item active">
                 <a className="page-link" href="#">1</a>
               </li>
-              <li className="page-item"><a className="page-link" href="#">2</a></li>
-              <li className="page-item"><a className="page-link" href="#">3</a></li>
-              <li className="page-item"><a className="page-link" href="#">4</a></li>
               <li className="page-item"><a className="page-link" href="#">Next</a></li>
             </ul>
           </div>

@@ -47,7 +47,7 @@ export default (
       <Route path="exhibition/" name="Exhibition">
         <IndexRoute component={ManageExhibition}/>
         <Route path="list" name="List" component={ExhibitionList}/>
-        <Route path="manage" name="Manage" component={ManageExhibition}/>
+        <Route path="manage(/:exhibitionId)" name="Manage" component={ManageExhibition}/>
       </Route>
 
       <Route path="booth/" name="Booth">

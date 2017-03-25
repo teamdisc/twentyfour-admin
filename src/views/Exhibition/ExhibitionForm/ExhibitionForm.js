@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Input } from '../BuildingBlocks/BuildingBlocks';
 import { DateRangePicker } from 'react-dates';
+import moment from 'moment';
 
 class ExhibitionForm extends Component {
 
@@ -8,8 +9,8 @@ class ExhibitionForm extends Component {
     name: '',
     description: '',
     category: '',
-    startDate: null,
-    endDate: null,
+    startDate: moment(this.props.startDate),
+    endDate: moment(this.props.endDate),
     focusedInput: null
   }
 
@@ -46,7 +47,7 @@ class ExhibitionForm extends Component {
                 name="text-input"
                 className="form-control"
                 placeholder="Enter your exhibition name"
-                // value={name}
+                defaultValue={this.props.name}
               />
             </Input>
 
@@ -57,16 +58,21 @@ class ExhibitionForm extends Component {
                 rows="6"
                 className="form-control"
                 placeholder="Detail of your exhibition..."
-                // value={description}
+                defaultValue={this.props.description}
               />
             </Input>
 
             <Input title="Category">
-              <select id="category-select" name="category-select" className="form-control" size="1" onChange={e => this.setState({category: e.target.value})}>
+              <select
+                id="category-select"
+                name="category-select"
+                className="form-control"
+                size="1"
+                onChange={e => this.setState({category: e.target.value})}
+                defaultValue={this.props.category}
+              >
                 <optgroup label="Please select your category">
-                  <option value="1">Home & Furniture</option>
-                  <option value="2">Travel & Tourism</option>
-                  <option value="3">Technology</option>
+                  {this.props.categoryList.map(cat => <option value={cat} key={cat}>{cat}</option>)}
                 </optgroup>
               </select>
             </Input>
