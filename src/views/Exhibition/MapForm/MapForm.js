@@ -79,10 +79,11 @@ class MapForm extends Component {
 
   handleOnSubmit = () => {
     const {marker, location} = this.state;
+    const {lat, lng} = marker.position
     const data = {
-      location: location,
-      latitude: marker.position.lat(),
-      longtitude: marker.position.lng()
+      location,
+      latitude: typeof lat === 'function' ? lat() : lat,
+      longtitude: typeof lng === 'function' ? lng() : lng
     }
     this.props.onSubmit(data);
   }

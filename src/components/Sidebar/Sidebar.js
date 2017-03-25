@@ -99,10 +99,10 @@ class Sidebar extends Component {
                   <Link to={'/pages/register'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Register</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/account/login'} className="nav-link" activeClassName="active" onClick={this.logout}><i className="icon-star"></i> Logout</Link>
+                  <Link to={'/pages/500'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Error 500</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/pages/500'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Error 500</Link>
+                  <Link to={'/account/login'} className="nav-link" activeClassName="active" onClick={this.logout}><i className="icon-star"></i> Logout</Link>
                 </li>
               </ul>
             </li>

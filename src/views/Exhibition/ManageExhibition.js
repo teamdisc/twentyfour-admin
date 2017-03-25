@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter }  from 'reactstrap';
 import axios from 'axios';
 import MapForm from './MapForm/MapForm';
 import PreviewForm from './PreviewForm/PreviewForm';
@@ -22,7 +23,8 @@ class ManageExhibition extends Component {
     location: null,
     longtitude: null,
     latitude: null,
-    categoryList: []
+    categoryList: [],
+    openModal: false,
   }
 
   componentWillMount() {
@@ -50,12 +52,28 @@ class ManageExhibition extends Component {
       .then(response => this.setState({catFetched: true, categoryList: response.data}))
   }
 
+  toggleModal = () => {
+    this.setState({openModal: !this.state.openModal});
+  }
+
   handleOnSubmit = (type, imagePath) => {
-    axios.post('http://161.246.5.227:8080/exhibition/2/update')
-      .then(response => {
-        console.log(response);
-      }).catch(error => {
+    const {exhibitionId} = this.props.params;
+    axios.post(`http://161.246.5.227:8080/exhibition/${exhibitionId}/update`, {
+      [type]: imagePath
+    }).then(response => {
+        this.setState({openModal: true})
+    }).catch(error => {
         console.log(error);
+    })
+  }
+
+  handleOnFormSubmit = (data) => {
+    const {exhibitionId} = this.props.params;
+    axios.post(`http://161.246.5.227:8080/exhibition/${exhibitionId}/update`, data)
+      .then(response => {
+          this.setState({openModal: true})
+      }).catch(error => {
+          console.log(error);
       })
   }
 
@@ -68,13 +86,23 @@ class ManageExhibition extends Component {
         <div className="row">
           <div className="col-md-6">
 
+            <Modal isOpen={this.state.openModal} toggle={this.toggleModal} className='modal-primary'>
+              <ModalHeader toggle={this.toggleModal}>Success</ModalHeader>
+              <ModalBody>
+                Your exhibition detail has been updated!
+              </ModalBody>
+              <ModalFooter>
+                <Button color="primary" onClick={this.toggleModal}>OK</Button>{' '}
+              </ModalFooter>
+            </Modal>
+
             <ExhibitionForm
               name={name}
               description={description}
               category={category}
               startDate={startDate}
               endDate={endDate}
-              onSubmit={data => console.log(data)}
+              onSubmit={data => this.handleOnFormSubmit(data)}
               categoryList={categoryList}
             />
               <PreviewForm
@@ -99,7 +127,7 @@ class ManageExhibition extends Component {
             <MapForm
               location={location}
               position={{lat: latitude, lng: longtitude}}
-              onSubmit={data => console.log(data)}
+              onSubmit={data => this.handleOnFormSubmit(data)}
             />
             <ContactForm onSubmit={data => console.log(data)}/>
 
