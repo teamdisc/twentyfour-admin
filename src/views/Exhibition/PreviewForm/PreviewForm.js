@@ -81,14 +81,16 @@ class PreviewForm extends Component {
             </div>
           </div>
         </form>
-        <div className="card-footer">
-          <button type="submit" className="btn btn-sm btn-primary" onClick={this.handleOnSubmit}>
-            <i className="fa fa-dot-circle-o" /> Submit
-          </button>
-          <button type="reset" className="btn btn-sm btn-danger" onClick={() => this.setState({imageUrl: '', imageFile: null})}>
-            <i className="fa fa-ban" /> Reset
-          </button>
-        </div>
+        {!this.props.hideFooter &&
+          <div className="card-footer">
+            <button type="submit" className="btn btn-sm btn-primary" onClick={this.handleOnSubmit}>
+              <i className="fa fa-dot-circle-o" /> Submit
+            </button>
+            <button type="reset" className="btn btn-sm btn-danger" onClick={() => this.setState({imageUrl: '', imageFile: null})}>
+              <i className="fa fa-ban" /> Reset
+            </button>
+          </div>
+        }
       </div>
     )
   }

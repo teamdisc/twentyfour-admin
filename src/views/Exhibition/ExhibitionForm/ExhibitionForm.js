@@ -89,12 +89,14 @@ class ExhibitionForm extends Component {
 
           </form>
         </div>
-        <div className="card-footer">
-          <button type="submit" className="btn btn-sm btn-primary" onClick={this.handleOnSubmit}>
-            <i className="fa fa-dot-circle-o"></i> Submit
-          </button>
-          <button type="reset" className="btn btn-sm btn-danger"><i className="fa fa-ban"></i> Reset</button>
-        </div>
+        {!this.props.hideFooter &&
+          <div className="card-footer">
+            <button type="submit" className="btn btn-sm btn-primary" onClick={this.handleOnSubmit}>
+              <i className="fa fa-dot-circle-o"></i> Submit
+            </button>
+            <button type="reset" className="btn btn-sm btn-danger"><i className="fa fa-ban"></i> Reset</button>
+          </div>
+        }
       </div>
     )
   }

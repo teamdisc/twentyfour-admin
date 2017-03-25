@@ -59,7 +59,8 @@ class ExhibitionList extends Component {
         <div className="card">
           <div className="card-header">
             <i className="fa fa-align-justify"></i> <strong>Exhibition</strong> List
-            <button className="btn btn-outline-primary"
+            <button
+              className="btn btn-outline-primary"
               style={{
                 float: 'right',
                 padding: 0,
@@ -69,7 +70,7 @@ class ExhibitionList extends Component {
                 height: 25
               }}
             >
-            +
+            <Link to={"/exhibition/add"}>+</Link>
             </button>
           </div>
           <div className="card-block">

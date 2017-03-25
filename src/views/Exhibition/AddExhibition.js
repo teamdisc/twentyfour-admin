@@ -6,10 +6,9 @@ import PreviewForm from './PreviewForm/PreviewForm';
 import ExhibitionForm from './ExhibitionForm/ExhibitionForm';
 import ContactForm from './ContactForm/ContactForm';
 
-class ManageExhibition extends Component {
+class AddExhibition extends Component {
 
   state = {
-    exhFetched: false,
     catFetched: false,
     id: null,
     name: null,
@@ -28,26 +27,6 @@ class ManageExhibition extends Component {
   }
 
   componentWillMount() {
-    const {exhibitionId} = this.props.params;
-    axios.get(`http://161.246.5.227:8080/exhibition/${exhibitionId}`)
-      .then(response => {
-        const {data} = response
-        this.setState({
-          exhFetched: true,
-          id: data.id,
-          name: data.exhibitionName,
-          description: data.description,
-          category: data.category,
-          startDate: data.startDate,
-          endDate: data.endDate,
-          mapUrl: data.mapUrl,
-          agendaUrl: data.agendaUrl,
-          posterUrl: data.posterUrl,
-          location: data.location,
-          latitude: data.latitude,
-          longtitude: data.longtitude
-        })
-      })
     axios.get('http://161.246.5.227:8080/exhibition/categories')
       .then(response => this.setState({catFetched: true, categoryList: response.data}))
   }
@@ -67,23 +46,24 @@ class ManageExhibition extends Component {
   }
 
   render() {
-    if(!this.state.exhFetched || !this.state.catFetched) { return <div /> }
+    if(!this.state.catFetched) { return <div /> }
     const {id, name, description, category, startDate, endDate, categoryList} = this.state;
     const {agendaUrl, mapUrl, posterUrl, location, latitude, longtitude} = this.state;
     return (
       <div className="animated fadeIn">
         <div className="row">
-          <div className="col-md-6">
 
-            <Modal isOpen={this.state.openModal} toggle={this.toggleModal} className='modal-primary'>
-              <ModalHeader toggle={this.toggleModal}>Success</ModalHeader>
-              <ModalBody>
-                Your exhibition detail has been updated!
-              </ModalBody>
-              <ModalFooter>
-                <Button color="primary" onClick={this.toggleModal}>OK</Button>{' '}
-              </ModalFooter>
-            </Modal>
+        <Modal isOpen={this.state.openModal} toggle={this.toggleModal} className='modal-primary'>
+          <ModalHeader toggle={this.toggleModal}>Success</ModalHeader>
+          <ModalBody>
+            Your exhibition detail has been updated!
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={this.toggleModal}>OK</Button>{' '}
+          </ModalFooter>
+        </Modal>
+
+          <div className="col-md-6">
 
             <ExhibitionForm
               name={name}
@@ -93,21 +73,25 @@ class ManageExhibition extends Component {
               endDate={endDate}
               onSubmit={data => this.handleOnSubmit(data)}
               categoryList={categoryList}
+              hideFooter
             />
               <PreviewForm
                 title="Poster"
-                imagePath={posterUrl}
+                imagePath=''
                 onSubmit={imagePath => this.handleOnSubmit({posterUrl: imagePath})}
+                hideFooter
               />
               <PreviewForm
                 title="Map"
-                imagePath={mapUrl}
+                imagePath=''
                 onSubmit={imagePath => this.handleOnSubmit({mapUrl: imagePath})}
+                hideFooter
               />
               <PreviewForm
                 title="Agenda"
-                imagePath={agendaUrl}
+                imagePath=''
                 onSubmit={imagePath => this.handleOnSubmit({agendaUrl: imagePath})}
+                hideFooter
               />
           </div>
 
@@ -117,8 +101,9 @@ class ManageExhibition extends Component {
               location={location}
               position={{lat: latitude, lng: longtitude}}
               onSubmit={data => this.handleOnSubmit(data)}
+              hideFooter
             />
-            <ContactForm onSubmit={data => console.log(data)}/>
+          <ContactForm onSubmit={data => console.log(data)} hideFooter />
 
           </div>
         </div>
@@ -128,4 +113,4 @@ class ManageExhibition extends Component {
 
 }
 
-export default ManageExhibition;
+export default AddExhibition;

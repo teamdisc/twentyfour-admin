@@ -127,14 +127,16 @@ class MapForm extends Component {
 
           </div>
         </form>
-        <div className="card-footer">
-          <button type="submit" className="btn btn-sm btn-primary" onClick={this.handleOnSubmit}>
-            <i className="fa fa-dot-circle-o"></i> Submit
+        {!this.props.hideFooter &&
+          <div className="card-footer">
+            <button type="submit" className="btn btn-sm btn-primary" onClick={this.handleOnSubmit}>
+              <i className="fa fa-dot-circle-o"></i> Submit
+              </button>
+            <button type="reset" className="btn btn-sm btn-danger" onClick={() => this.setState({location: ''})}>
+              <i className="fa fa-ban"></i> Reset
             </button>
-          <button type="reset" className="btn btn-sm btn-danger" onClick={() => this.setState({location: ''})}>
-            <i className="fa fa-ban"></i> Reset
-          </button>
-        </div>
+          </div>
+        }
       </div>
     )
   }

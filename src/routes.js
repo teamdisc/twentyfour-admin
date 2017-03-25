@@ -28,6 +28,7 @@ import ManageExhibition from './views/Exhibition/ManageExhibition'
 import ManageBooth from './views/Booth/ManageBooth'
 import ExhibitionList from './views/Exhibition/ExhibitionList'
 import BoothList from './views/Booth/BoothList'
+import AddExhibition from './views/Exhibition/AddExhibition'
 
 export default class App extends Component {
 
@@ -65,6 +66,7 @@ export default class App extends Component {
               <Route path="booth" name="Booth" component={BoothList}/>
               <Route path="booth(/:boothId)" name="Manage Booth" component={ManageBooth}/>
             </Route>
+            <Route path="add" name="Add" component={AddExhibition}/>
           </Route>
 
           <Route path="booth/" name="Booth">
