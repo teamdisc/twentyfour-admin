@@ -26,6 +26,7 @@ import Widgets from './views/Widgets/'
 import ManageExhibition from './views/Exhibition/ManageExhibition'
 import ManageBooth from './views/Booth/ManageBooth'
 import ExhibitionList from './views/Exhibition/ExhibitionList'
+import BoothList from './views/Booth/BoothList'
 
 export default (
   <Router history={hashHistory}>
@@ -45,9 +46,12 @@ export default (
       </Route>
 
       <Route path="exhibition/" name="Exhibition">
-        <IndexRoute component={ManageExhibition}/>
-        <Route path="list" name="List" component={ExhibitionList}/>
-        <Route path="manage(/:exhibitionId)" name="Manage" component={ManageExhibition}/>
+        <IndexRoute component={ExhibitionList}/>
+        <Route path=":exhibitionId/" name="Manage">
+          <IndexRoute component={ManageExhibition}/>
+          <Route path="booth" name="Booth" component={BoothList}/>
+          <Route path="manage(/:boothId)" name="Manage" component={ManageBooth}/>
+        </Route>
       </Route>
 
       <Route path="booth/" name="Booth">
@@ -62,6 +66,7 @@ export default (
       </Route>
       <Route path="widgets" name="Widgets" component={Widgets}/>
       <Route path="charts" name="Charts" component={Charts}/>
+      <Route path="*" name="Page 404" component={Page404}/>
     </Route>
     <Route path="pages/" name="Pages" component={Simple}>
       <IndexRoute component={Page404}/>

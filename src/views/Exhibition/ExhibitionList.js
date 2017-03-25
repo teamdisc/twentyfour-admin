@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router';
 
 class ExhibitionList extends Component {
 
   state = {
     fetched: false,
-    exhibitions: null
+    exhibitions: []
   }
 
   componentWillMount() {
@@ -33,10 +34,17 @@ class ExhibitionList extends Component {
         <td>{exhibition.startDate}</td>
         <td>{exhibition.endDate}</td>
         <td>{exhibition.category}</td>
-        <td>
-          <button type="button" className="btn btn-primary">
-            <i className="fa fa-edit"></i>&nbsp; Edit
-          </button>
+        <td style={{width: 240}}>
+          <Link to={`/exhibition/${exhibition.id}/`} style={{color: 'white', padding: 2}}>
+            <button type="button" className="btn btn-primary" style={{cursor: 'pointer'}}>
+                <i className="fa fa-edit"></i>&nbsp; Edit
+            </button>
+          </Link>
+          <Link to={`/exhibition/${exhibition.id}/booth`} style={{color: 'white', padding: 2}}>
+            <button type="button" className="btn btn-primary" style={{cursor: 'pointer', backgroundColor: '#50b6ce', borderColor: '#50b6ce'}}>
+                <i className="fa fa-th-list"></i>&nbsp; Booth
+            </button>
+          </Link>
           {/* <button type="button" className="btn btn-danger">
             <i className="fa fa-star"></i>&nbsp; Edit
           </button> */}
@@ -47,12 +55,10 @@ class ExhibitionList extends Component {
   }
 
   render() {
-    if(!this.state.fetched) {
-      return <div />
-    }
+    if(!this.state.fetched) { return <div /> }
     const {exhibitions} = this.state;
     return (
-      <div className="col-md-12">
+      <div className="col-md-12 animated fadeIn">
         <div className="card">
           <div className="card-header">
             <i className="fa fa-align-justify"></i> <strong>Exhibition</strong> List

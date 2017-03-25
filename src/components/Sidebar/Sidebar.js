@@ -32,13 +32,13 @@ class Sidebar extends Component {
               <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-puzzle"></i> Exhibition</a>
               <ul className="nav-dropdown-items">
                 <li className="nav-item">
-                  <Link to={'/exhibition/manage/2'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> Manage</Link>
+                  <Link to={'/exhibition/2'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> Manage</Link>
                 </li>
                 <li className="nav-item">
                   <Link to={'/exhibition/report'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> View Report</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/exhibition/list'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> List</Link>
+                  <Link to={'/exhibition/'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> List</Link>
                 </li>
                 <li className="nav-item">
                   <Link to={'/components/social-buttons'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> Social Buttons</Link>
