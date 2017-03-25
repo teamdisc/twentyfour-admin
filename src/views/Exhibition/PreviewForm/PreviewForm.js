@@ -72,36 +72,12 @@ class PreviewForm extends Component {
                 value={imageUrl}
                 onChange={this.handleInputUrlChange}
               />
-              {/* <Input title={`${title} URL`} shouldNewLine>
-                <input
-                  className="form-control"
-                  type="url"
-                  id="url-input"
-                  name="url-input"
-                  placeholder="Enter URL of your photo..."
-                  value={imageUrl}
-                  onChange={this.handleInputUrlChange}
-                />
-              </Input> */}
               <FileInput
                 title="Upload photo"
                 name={title}
                 value={imageFile}
                 onFileSelect={this.handleOnSelect}
               />
-              {/* <Input title="Upload Photo">
-                <input
-                  className="input-file"
-                  type="file"
-                  id={`${title}-file-input`}
-                  name={`${title}-file-input`}
-                  onChange={this.handleOnSelect}
-                />
-                <label htmlFor={`${title}-file-input`}>
-                  <i className="fa fa-upload"> </i>
-                  {(imageFile && imageFile.name) || 'Choose a file'}
-                </label>
-              </Input> */}
             </div>
           </div>
         </form>

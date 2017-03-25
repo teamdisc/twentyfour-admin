@@ -96,7 +96,11 @@ class ManageExhibition extends Component {
 
           <div className="col-md-6">
 
-            <MapForm onSubmit={data => console.log(data)}/>
+            <MapForm
+              location={location}
+              position={{lat: latitude, lng: longtitude}}
+              onSubmit={data => console.log(data)}
+            />
             <ContactForm onSubmit={data => console.log(data)}/>
 
           </div>

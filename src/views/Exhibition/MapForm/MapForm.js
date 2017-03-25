@@ -37,12 +37,9 @@ const GoogleMapForm = _.flowRight(withScriptjs, withGoogleMap)(props => (
 class MapForm extends Component {
 
   state = {
-    location: '',
+    location: this.props.location,
     marker: {
-      position: {
-        lat: 25.0112183,
-        lng: 121.520656565
-      },
+      position: this.props.position,
       key: 'Taiwan',
       defaultAnimation: 2
     }
@@ -105,6 +102,7 @@ class MapForm extends Component {
                 type="text"
                 id="location-input"
                 name="text-input"
+                defaultValue={this.props.location}
                 value={location}
                 onChange={e => this.setState({location: e.target.value})}
                 className="form-control"
