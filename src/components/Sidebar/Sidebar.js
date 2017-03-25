@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+import Auth from '../../Auth';
 
 class Sidebar extends Component {
 
@@ -15,6 +16,10 @@ class Sidebar extends Component {
   // secondLevelActive(routeName) {
   //   return this.props.location.pathname.indexOf(routeName) > -1 ? "nav nav-second-level collapse in" : "nav nav-second-level collapse";
   // }
+
+  logout = () => {
+    Auth.deauthenUser();
+  }
 
   render() {
     return (
@@ -94,7 +99,7 @@ class Sidebar extends Component {
                   <Link to={'/pages/register'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Register</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/pages/404'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Error 404</Link>
+                  <Link to={'/account/login'} className="nav-link" activeClassName="active" onClick={this.logout}><i className="icon-star"></i> Logout</Link>
                 </li>
                 <li className="nav-item">
                   <Link to={'/pages/500'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Error 500</Link>

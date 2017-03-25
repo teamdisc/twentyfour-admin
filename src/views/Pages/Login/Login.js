@@ -1,6 +1,33 @@
 import React, { Component } from 'react';
+import { hashHistory } from 'react-router';
+import Auth from '../../../Auth';
 
 class Login extends Component {
+
+  handleOnLogin = () => {
+    Auth.authenUser('accessToken12');
+    const {location} = this.props;
+    if(location.state && location.state.nextPathname) {
+      hashHistory.push(location.state.nextPathname);
+    } else {
+      hashHistory.push('/');
+    }
+  }
+
+  // signInFunction({params}, (err, res) => {
+  //   // Now in the sign in callback
+  //   if (err)
+  //     alert("Please try again")
+  //   else {
+  //     const location = this.props.location
+  //     if (location.state && location.state.nextPathname) {
+  //       browserHistory.push(location.state.nextPathname)
+  //     } else {
+  //       browserHistory.push('/')
+  //     }
+  //   }
+  // })
+
   render() {
     return (
       <div className="container">
@@ -21,7 +48,7 @@ class Login extends Component {
                   </div>
                   <div className="row">
                     <div className="col-6">
-                      <button type="button" className="btn btn-primary px-2">Login</button>
+                      <button type="button" className="btn btn-primary px-2" onClick={this.handleOnLogin}>Login</button>
                     </div>
                     <div className="col-6 text-right">
                       <button type="button" className="btn btn-link px-0">Forgot password?</button>
