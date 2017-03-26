@@ -45,7 +45,7 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   <Link to={'/exhibition/'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> List</Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link to={'/components/social-buttons'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> Social Buttons</Link>
                 </li>
                 <li className="nav-item">
@@ -65,7 +65,7 @@ class Sidebar extends Component {
                 </li>
                 <li className="nav-item">
                   <Link to={'/components/tabs'} className="nav-link" activeClassName="active"><i className="icon-puzzle"></i> Tabs</Link>
-                </li>
+                </li> */}
               </ul>
             </li>
             <li className={this.activeRoute("/icons")}>
@@ -74,17 +74,17 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   <Link to={'/booth/manage'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Manage</Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link to={'/icons/simple-line-icons'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Simple Line Icons</Link>
-                </li>
+                </li> */}
               </ul>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to={'/widgets'} className="nav-link" activeClassName="active"><i className="icon-calculator"></i> Widgets <span className="badge badge-info">NEW</span></Link>
             </li>
             <li className="nav-item">
               <Link to={'/charts'} className="nav-link" activeClassName="active"><i className="icon-pie-chart"></i> Charts</Link>
-            </li>
+            </li> */}
             <li className="divider"></li>
             <li className="nav-title">
               Account

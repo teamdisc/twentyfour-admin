@@ -52,7 +52,7 @@ class Header extends Component {
             <a className="nav-link" href="#">Settings</a>
           </li>
         </ul>
-        <ul className="nav navbar-nav ml-auto">
+        {/* <ul className="nav navbar-nav ml-auto">
           <li className="nav-item hidden-md-down">
             <a className="nav-link" href="#"><i className="icon-bell"></i><span className="badge badge-pill badge-danger">5</span></a>
           </li>
@@ -93,7 +93,7 @@ class Header extends Component {
           <li className="nav-item hidden-md-down">
             <a className="nav-link navbar-toggler aside-menu-toggler" onClick={this.asideToggle} href="#">&#9776;</a>
           </li>
-        </ul>
+        </ul> */}
       </header>
     )
   }
