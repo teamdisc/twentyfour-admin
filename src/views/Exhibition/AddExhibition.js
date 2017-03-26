@@ -10,18 +10,6 @@ class AddExhibition extends Component {
 
   state = {
     catFetched: false,
-    id: null,
-    name: null,
-    description: null,
-    category: null,
-    startDate: null,
-    endDate: null,
-    mapUrl: null,
-    agendaUrl: null,
-    posterUrl: null,
-    location: null,
-    longtitude: null,
-    latitude: null,
     categoryList: [],
     openModal: false,
   }
@@ -35,13 +23,58 @@ class AddExhibition extends Component {
     this.setState({openModal: !this.state.openModal});
   }
 
-  handleOnSubmit = (data) => {
-    const {exhibitionId} = this.props.params;
-    axios.post(`http://161.246.5.227:8080/exhibition/${exhibitionId}/update`, data)
+  getExhibitionFormData = () => {
+    const {exhibitionForm} = this;
+    const {startDate, endDate} = exhibitionForm.state;
+    return {
+      name: exhibitionForm.form['name-input'].value,
+      description: exhibitionForm.form['desc-textarea-input'].value,
+      category: exhibitionForm.form['category-select'].value,
+      startDate: startDate ? startDate.format('YYYY-MM-DD') : null,
+      endDate: endDate ? endDate.format('YYYY-MM-DD') : null,
+    }
+  }
+
+  normalizePreviewData = (previewForm) => {
+    const {imageUrl, imageFile} = previewForm.state;
+    return (imageFile &&  imageFile.file) || imageUrl;
+  }
+
+  getPreviewFormData = () => {
+    const {previewMapForm, previewPosterForm, previewAgendaForm} = this;
+    return {
+      posterUrl: this.normalizePreviewData(previewPosterForm),
+      mapUrl: this.normalizePreviewData(previewMapForm),
+      agendaUrl: this.normalizePreviewData(previewAgendaForm)
+    }
+  }
+
+  getMapFormData = () => {
+    const {mapForm} = this;
+    const {location, marker} = mapForm.state;
+    const {lat, lng} = marker.position;
+    return {
+      location: location,
+      latitude: typeof lat === 'function' ? lat() : lat,
+      longtitude: typeof lng === 'function' ? lng() : lng
+    }
+  }
+
+  handleOnAdd = () => {
+    const exhibitionData = this.getExhibitionFormData();
+    const previewData = this.getPreviewFormData();
+    const mapData = this.getMapFormData();
+    const data = {
+      ...exhibitionData,
+      ...previewData,
+      ...mapData
+    }
+    console.log(data);
+    axios.post('http://161.246.5.227:8080/exhibition/add', data)
       .then(response => {
-          this.setState({openModal: true})
+        this.setState({openModal: true})
       }).catch(error => {
-          console.log(error);
+        console.log(error);
       })
   }
 
@@ -73,24 +106,28 @@ class AddExhibition extends Component {
               endDate={endDate}
               onSubmit={data => this.handleOnSubmit(data)}
               categoryList={categoryList}
+              ref={exhibitionForm => this.exhibitionForm = exhibitionForm}
               hideFooter
             />
               <PreviewForm
                 title="Poster"
                 imagePath=''
                 onSubmit={imagePath => this.handleOnSubmit({posterUrl: imagePath})}
+                ref={posterForm => this.previewPosterForm = posterForm}
                 hideFooter
               />
               <PreviewForm
                 title="Map"
                 imagePath=''
                 onSubmit={imagePath => this.handleOnSubmit({mapUrl: imagePath})}
+                ref={mapForm => this.previewMapForm = mapForm}
                 hideFooter
               />
               <PreviewForm
                 title="Agenda"
                 imagePath=''
                 onSubmit={imagePath => this.handleOnSubmit({agendaUrl: imagePath})}
+                ref={agendaForm => this.previewAgendaForm = agendaForm}
                 hideFooter
               />
           </div>
@@ -99,13 +136,24 @@ class AddExhibition extends Component {
 
             <MapForm
               location={location}
-              position={{lat: latitude, lng: longtitude}}
+              position={{lat: 13.764912, lng: 100.538375}}
               onSubmit={data => this.handleOnSubmit(data)}
+              ref={mapForm => this.mapForm = mapForm}
               hideFooter
             />
-          <ContactForm onSubmit={data => console.log(data)} hideFooter />
+            <ContactForm onSubmit={data => console.log(data)} hideFooter />
 
           </div>
+        </div>
+        <div className="col-md-12" style={{paddingBottom: 20}}>
+          <button
+            type="button"
+            className="btn btn-primary btn-lg btn-block"
+            style={{width: '40%', margin: 'auto', fontSize: '1rem'}}
+            onClick={this.handleOnAdd}
+          >
+            <i className="fa fa-plus-circle" style={{paddingRight: 6}}/> Add this exhibition!
+          </button>
         </div>
       </div>
     )

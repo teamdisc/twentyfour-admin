@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter }  from 'reactstrap';
 import axios from 'axios';
+import moment from 'moment';
 import MapForm from './MapForm/MapForm';
 import PreviewForm from './PreviewForm/PreviewForm';
 import ExhibitionForm from './ExhibitionForm/ExhibitionForm';
@@ -32,14 +33,15 @@ class ManageExhibition extends Component {
     axios.get(`http://161.246.5.227:8080/exhibition/${exhibitionId}`)
       .then(response => {
         const {data} = response
+        console.log(data.startDate);
         this.setState({
           exhFetched: true,
           id: data.id,
           name: data.exhibitionName,
           description: data.description,
           category: data.category,
-          startDate: data.startDate,
-          endDate: data.endDate,
+          startDate: moment(data.startDate),
+          endDate: moment(data.endDate),
           mapUrl: data.mapUrl,
           agendaUrl: data.agendaUrl,
           posterUrl: data.posterUrl,

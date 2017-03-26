@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { Input } from '../BuildingBlocks/BuildingBlocks';
 import { DateRangePicker } from 'react-dates';
-import moment from 'moment';
 
 class ExhibitionForm extends Component {
 
   state = {
-    name: '',
-    description: '',
-    category: '',
-    startDate: moment(this.props.startDate),
-    endDate: moment(this.props.endDate),
+    startDate: this.props.startDate,
+    endDate: this.props.endDate,
     focusedInput: null
   }
 
@@ -31,7 +27,7 @@ class ExhibitionForm extends Component {
   }
 
   render() {
-    const {name, description, category, startDate, endDate, focusedInput} = this.state;
+    const {startDate, endDate, focusedInput} = this.state;
     return (
       <div className="card">
         <div className="card-header">
