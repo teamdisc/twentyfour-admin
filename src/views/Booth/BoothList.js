@@ -57,11 +57,25 @@ class BoothList extends Component {
   render() {
     if(!this.state.fetched) { return <div /> }
     const {booths} = this.state;
+    const {exhibitionId} = this.props.params;
     return (
       <div className="col-md-12 animated fadeIn">
         <div className="card">
           <div className="card-header">
             <i className="fa fa-align-justify"></i> <strong>Booth</strong> List
+              <button
+                className="btn btn-outline-primary"
+                style={{
+                  float: 'right',
+                  padding: 0,
+                  marginTop: -2,
+                  marginBottom: -2,
+                  width: 25,
+                  height: 25
+                }}
+              >
+              <Link to={`/exhibition/${exhibitionId}/booth/add`}>+</Link>
+              </button>
           </div>
           <div className="card-block">
             <table className="table table-striped">

@@ -89,7 +89,7 @@ class AddExhibition extends Component {
         <Modal isOpen={this.state.openModal} toggle={this.toggleModal} className='modal-primary'>
           <ModalHeader toggle={this.toggleModal}>Success</ModalHeader>
           <ModalBody>
-            Your exhibition detail has been updated!
+            We have added your exhibition!
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggleModal}>OK</Button>{' '}
