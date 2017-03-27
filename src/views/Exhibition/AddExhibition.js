@@ -15,7 +15,7 @@ class AddExhibition extends Component {
   }
 
   componentWillMount() {
-    axios.get('http://161.246.5.227:8080/exhibition/categories')
+    axios.get('http://161.246.5.227:8080/exhibitions/categories')
       .then(response => this.setState({catFetched: true, categoryList: response.data}))
   }
 
@@ -70,7 +70,7 @@ class AddExhibition extends Component {
       ...mapData
     }
     console.log(data);
-    axios.post('http://161.246.5.227:8080/exhibition/add', data)
+    axios.post('http://161.246.5.227:8080/exhibitions/add', data)
       .then(response => {
         this.setState({openModal: true})
       }).catch(error => {

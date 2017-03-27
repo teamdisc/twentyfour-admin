@@ -12,7 +12,7 @@ class BoothList extends Component {
 
   componentWillMount() {
     const {exhibitionId} = this.props.params;
-    axios.get(`http://161.246.5.227:8080/exhibition/${exhibitionId}/booths`)
+    axios.get(`http://161.246.5.227:8080/exhibitions/${exhibitionId}/booths`)
       .then(response => {
         const {data} = response;
         const booths = data.map(b => {

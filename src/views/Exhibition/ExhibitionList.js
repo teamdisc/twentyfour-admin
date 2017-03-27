@@ -10,13 +10,13 @@ class ExhibitionList extends Component {
   }
 
   componentWillMount() {
-    axios.get('http://161.246.5.227:8080/exhibition/')
+    axios.get('http://161.246.5.227:8080/exhibitions/')
       .then(response => {
         const {content} = response.data;
         const exhibitions = content.map(ex => {
           return {
             id: ex.id,
-            name: ex.exhibitionName,
+            name: ex.name,
             category: ex.category,
             startDate: ex.startDate,
             endDate: ex.endDate

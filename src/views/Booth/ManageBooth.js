@@ -14,7 +14,7 @@ class ManageBooth extends Component {
 
   componentWillMount() {
     const {boothId, exhibitionId} = this.props.params;
-    axios.get(`http://161.246.5.227:8080/exhibition/${exhibitionId}/booths/${boothId}`)
+    axios.get(`http://161.246.5.227:8080/exhibitions/${exhibitionId}/booths/${boothId}`)
       .then(response => {
         const {data} = response;
         this.setState({
@@ -30,7 +30,7 @@ class ManageBooth extends Component {
 
   handleOnSubmit = (data) => {
     const {boothId, exhibitionId} = this.props.params;
-    axios.post(`http://161.246.5.227:8080/exhibition/${exhibitionId}/booths/${boothId}/update`, data)
+    axios.post(`http://161.246.5.227:8080/exhibitions/${exhibitionId}/booths/${boothId}/update`, data)
       .then(response => {
           this.setState({openModal: true})
       }).catch(error => {
