@@ -60,8 +60,8 @@ class Login extends Component {
                 <div className="card-block text-center">
                   <div>
                     <h2>Sign up</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <button type="button" className="btn btn-primary active mt-1">Register Now!</button>
+                    <p>This admin panel is limited exclusively to organizer and exhibitor. If you are so and do not have an account, please contact us.</p>
+                    <button type="button" className="btn btn-primary active mt-1">Contact us</button>
                   </div>
                 </div>
               </div>
