@@ -39,7 +39,7 @@ export const URLInput = ({title, value, onChange}) => (
   </Input>
 )
 
-export const FileInput = ({title, name, value, onFileSelect}) => (
+export const FileInput = ({title, name, key, value, onFileSelect}) => (
   <Input title={title}>
     <input
       className="input-file"

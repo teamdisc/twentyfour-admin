@@ -26,6 +26,7 @@ import Widgets from './views/Widgets/'
 
 import ManageExhibition from './views/Exhibition/ManageExhibition'
 import ManageBooth from './views/Booth/ManageBooth'
+import ManageBanner from './views/Banner/ManageBanner'
 import ExhibitionList from './views/Exhibition/ExhibitionList'
 import BoothList from './views/Booth/BoothList'
 import UserList from './views/User/UserList'
@@ -63,6 +64,7 @@ export default class App extends Component {
 
           <Route path="exhibition/" name="Exhibition">
             <IndexRoute component={ExhibitionList}/>
+            <Route path="banner" name="Banner" component={ManageBanner}/>
             <Route path=":exhibitionId/" name="Manage">
               <IndexRoute component={ManageExhibition}/>
               <Route path="booth" name="Booth" component={BoothList}/>

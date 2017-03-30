@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Input } from '../BuildingBlocks/BuildingBlocks';
+import 'airbnb-js-shims/target/es2015';
 import { DateRangePicker } from 'react-dates';
 
 class ExhibitionForm extends Component {

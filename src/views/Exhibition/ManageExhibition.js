@@ -32,8 +32,7 @@ class ManageExhibition extends Component {
     const {exhibitionId} = this.props.params;
     axios.get(`http://161.246.5.227:8080/exhibitions/${exhibitionId}`)
       .then(response => {
-        const {data} = response
-        console.log(data.startDate);
+        const {data} = response;
         this.setState({
           exhFetched: true,
           id: data.id,

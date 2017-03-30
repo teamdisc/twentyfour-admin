@@ -65,3 +65,41 @@
 header.navbar .navbar-brand {
   background-size: 110px auto;
 }
+
+//Custom a
+
+.list-group {
+
+  // a:not([href]):not([tabindex]) {
+  //   color: #32baa0;
+  //   cursor: pointer;
+  // }
+  //
+  // a:not([href]):not([tabindex]):hover {
+  //   color: darken(#32baa0, 20%);
+  // }
+  //
+  // .list-group-item.active {
+  //   color: white !important;
+  // }
+  //
+  // .list-group-item.active:hover {
+  //   color: darken(white, 20%) !important;
+  // }
+
+  color: #32baa0;
+  cursor: pointer;
+
+  .active {
+    color: white !important;
+  }
+
+  .list-group-item:hover {
+    background-color: darken(white, 5%);
+  }
+
+  .list-group-item.active:hover {
+    background-color: darken(#32baa0, 5%);
+  }
+
+}
