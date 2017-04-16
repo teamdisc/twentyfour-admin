@@ -21,6 +21,8 @@ class ExhibitionForm extends Component {
       name: form['name-input'].value,
       description: form['desc-textarea-input'].value,
       category: form['category-select'].value,
+      websiteUrl: form['web-input'].value,
+      customWebsiteText: form['web-text-input'].value,
       startDate: sDate,
       endDate: eDate
     }
@@ -72,6 +74,26 @@ class ExhibitionForm extends Component {
                   {this.props.categoryList.map(cat => <option value={cat} key={cat}>{cat}</option>)}
                 </optgroup>
               </select>
+            </Input>
+
+            <Input title="Website">
+              <input
+                id="web-input"
+                name="web-input"
+                className="form-control"
+                placeholder="Website of your exhibition..."
+                defaultValue={this.props.websiteUrl}
+              />
+            </Input>
+
+            <Input title="Custom website text">
+              <input
+                id="web-text-input"
+                name="web-text-input"
+                className="form-control"
+                placeholder="Enter custom website text..."
+                defaultValue={this.props.customWebsiteText}
+              />
             </Input>
 
             <Input title="Dates">

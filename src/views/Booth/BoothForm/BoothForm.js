@@ -82,7 +82,7 @@ class BoothForm extends Component {
                 name="nf-email"
                 className="form-control"
                 placeholder="Enter your email..."
-                defaultValue={this.props.email}
+                defaultValue={this.props.contact.email}
               />
             </Input>
 
@@ -93,7 +93,7 @@ class BoothForm extends Component {
                 name="nf-tel"
                 className="form-control"
                 placeholder="Enter your telephone number..."
-                defaultValue={this.props.mobileNo}
+                defaultValue={this.props.contact.mobileNo}
               />
             </Input>
 
@@ -104,7 +104,7 @@ class BoothForm extends Component {
                 name="text-input"
                 className="form-control"
                 placeholder="Enter your Facebook name..."
-                defaultValue={this.props.facebook}
+                defaultValue={this.props.contact.facebook}
               />
             </Input>
 
@@ -115,7 +115,7 @@ class BoothForm extends Component {
                 name="text-input"
                 className="form-control"
                 placeholder="Enter your Facebook URL..."
-                defaultValue={this.props.facebookUrl}
+                defaultValue={this.props.contact.facebookUrl}
               />
             </Input>
 

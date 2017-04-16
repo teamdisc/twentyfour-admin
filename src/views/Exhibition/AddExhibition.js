@@ -5,6 +5,7 @@ import MapForm from './MapForm/MapForm';
 import PreviewForm from './PreviewForm/PreviewForm';
 import ExhibitionForm from './ExhibitionForm/ExhibitionForm';
 import ContactForm from './ContactForm/ContactForm';
+import CategoryForm from './CategoryForm/CategoryForm';
 
 class AddExhibition extends Component {
 
@@ -32,6 +33,26 @@ class AddExhibition extends Component {
       category: exhibitionForm.form['category-select'].value,
       startDate: startDate ? startDate.format('YYYY-MM-DD') : null,
       endDate: endDate ? endDate.format('YYYY-MM-DD') : null,
+    }
+  }
+
+  getContactFormData = () => {
+    const {contactForm} = this;
+    return {
+      organizerName: contactForm.form['contact-name-input'].value,
+      organizerDetail: contactForm.form['contact-desc-input'].value,
+      organizerLogoUrl: contactForm.form['contact-email-input'].value,
+      email: contactForm.form['contact-email-input'].value,
+      mobileNo: contactForm.form['contact-tel-input'].value,
+      facebook: contactForm.form['contact-facebook-input'].value,
+      facebookUrl: contactForm.form['contact-facebook-url-input'].value,
+    }
+  }
+
+  getCategoryFormData = () => {
+    const {categoryForm} = this;
+    return {
+      categoryList: categoryForm.state.categoryList.filter(cat => cat != "")
     }
   }
 
@@ -64,10 +85,12 @@ class AddExhibition extends Component {
     const exhibitionData = this.getExhibitionFormData();
     const previewData = this.getPreviewFormData();
     const mapData = this.getMapFormData();
+    const contactData = this.getContactFormData();
     const data = {
       ...exhibitionData,
       ...previewData,
-      ...mapData
+      ...mapData,
+      ...contactData
     }
     console.log(data);
     axios.post('http://161.246.5.227:8080/exhibitions/add', data)
@@ -141,7 +164,8 @@ class AddExhibition extends Component {
               ref={mapForm => this.mapForm = mapForm}
               hideFooter
             />
-            <ContactForm onSubmit={data => console.log(data)} hideFooter />
+            <ContactForm ref={contactForm => this.contactForm = contactForm} hideFooter />
+            <CategoryForm ref={categoryForm => this.categoryForm = categoryForm} hideFooter />
 
           </div>
         </div>

@@ -6,6 +6,7 @@ import MapForm from './MapForm/MapForm';
 import PreviewForm from './PreviewForm/PreviewForm';
 import ExhibitionForm from './ExhibitionForm/ExhibitionForm';
 import ContactForm from './ContactForm/ContactForm';
+import CategoryForm from './CategoryForm/CategoryForm';
 
 class ManageExhibition extends Component {
 
@@ -41,6 +42,8 @@ class ManageExhibition extends Component {
           category: data.category,
           startDate: moment(data.startDate),
           endDate: moment(data.endDate),
+          websiteUrl: data.websiteUrl,
+          customWebsiteText: data.customWebsiteText,
           mapUrl: data.mapUrl,
           agendaUrl: data.agendaUrl,
           posterUrl: data.posterUrl,
@@ -69,8 +72,8 @@ class ManageExhibition extends Component {
 
   render() {
     if(!this.state.exhFetched || !this.state.catFetched) { return <div /> }
-    const {id, name, description, category, startDate, endDate, categoryList} = this.state;
-    const {agendaUrl, mapUrl, posterUrl, location, latitude, longtitude} = this.state;
+    const {id, name, description, category, startDate, endDate, categoryList, websiteUrl} = this.state;
+    const {agendaUrl, mapUrl, posterUrl, location, latitude, longtitude, customWebsiteText} = this.state
     return (
       <div className="animated fadeIn">
         <div className="row">
@@ -90,6 +93,8 @@ class ManageExhibition extends Component {
               name={name}
               description={description}
               category={category}
+              websiteUrl={websiteUrl}
+              customWebsiteText={customWebsiteText}
               startDate={startDate}
               endDate={endDate}
               onSubmit={data => this.handleOnSubmit(data)}
@@ -120,6 +125,8 @@ class ManageExhibition extends Component {
               onSubmit={data => this.handleOnSubmit(data)}
             />
             <ContactForm onSubmit={data => console.log(data)}/>
+
+            <CategoryForm onSubmit={data => this.handleOnSubmit(data)} />
 
           </div>
         </div>

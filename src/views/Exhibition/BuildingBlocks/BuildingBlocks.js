@@ -55,6 +55,23 @@ export const FileInput = ({title, name, key, value, onFileSelect}) => (
   </Input>
 )
 
+export const RemovableInput = ({defaultValue, onRemove}) => (
+  <div className="row">
+    <div className="col-md-12" style={{paddingBottom: 4}}>
+      <input
+        className="form-control"
+        style={{width: '90%', display: 'inline-block'}}
+        defaultValue={defaultValue}
+      />
+      <i
+        className="fa fa-minus-square"
+        style={{paddingLeft: '6%', color: '#da403d', cursor: 'pointer'}}
+        onClick={onRemove}
+      />
+    </div>
+  </div>
+)
+
 //MARK:- not ready-use!
 export const Card = ({headerChildren, children, footerChildren}) => {
   return (
