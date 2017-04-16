@@ -10,10 +10,10 @@ class ExhibitionList extends Component {
   }
 
   componentWillMount() {
-    axios.get('http://161.246.5.227:8080/exhibitions/')
+    axios.get('http://54.255.222.20:8080/exhibitions/all')
       .then(response => {
-        const {content} = response.data;
-        const exhibitions = content.map(ex => {
+        const {data} = response;
+        const exhibitions = data.map(ex => {
           return {
             id: ex.id,
             name: ex.name,
@@ -36,17 +36,21 @@ class ExhibitionList extends Component {
         <td>{exhibition.category}</td>
         <td style={{width: 240}}>
           <Link to={`/exhibition/${exhibition.id}/`} style={{color: 'white', padding: 2}}>
-            <button type="button" className="btn btn-primary" style={{cursor: 'pointer'}}>
+            <button type="button" className="btn btn-primary pointer">
                 <i className="fa fa-edit"></i>&nbsp; Edit
             </button>
           </Link>
           <Link to={`/exhibition/${exhibition.id}/booth`} style={{color: 'white', padding: 2}}>
-            <button type="button" className="btn btn-primary" style={{cursor: 'pointer', backgroundColor: '#50b6ce', borderColor: '#50b6ce'}}>
+            <button type="button" className="btn btn-info pointer">
                 <i className="fa fa-th-list"></i>&nbsp; Booth
             </button>
           </Link>
-          {/* <span className="badge badge-success">Active</span> */}
         </td>
+        <td><Link to={`/exhibition/${exhibition.id}/user`} style={{color: 'white', padding: 2}}>
+          <button type="button" className="btn btn-orange pointer">
+              <i className="fa fa-user"></i>&nbsp; User
+          </button>
+        </Link></td>
       </tr>
     )
   }
@@ -83,6 +87,7 @@ class ExhibitionList extends Component {
                   <th>End date</th>
                   <th>Category</th>
                   <th>Action</th>
+                  <th>Registered</th>
                 </tr>
               </thead>
               <tbody>

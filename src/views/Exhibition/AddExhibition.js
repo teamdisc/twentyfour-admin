@@ -15,7 +15,7 @@ class AddExhibition extends Component {
   }
 
   componentWillMount() {
-    axios.get('http://161.246.5.227:8080/exhibitions/categories')
+    axios.get('http://54.255.222.20:8080/exhibitions/categories')
       .then(response => this.setState({catFetched: true, categoryList: response.data}))
   }
 

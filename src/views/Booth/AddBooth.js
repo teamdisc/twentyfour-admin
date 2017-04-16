@@ -16,7 +16,7 @@ class AddBooth extends Component {
 
   handleOnSubmit = (data) => {
     const {boothId, exhibitionId} = this.props.params;
-    axios.post(`http://161.246.5.227:8080/exhibitions/${exhibitionId}/booths/add`, data)
+    axios.post(`http://54.255.222.20:8080/exhibitions/${exhibitionId}/booths/add`, data)
       .then(response => {
           this.setState({openModal: true})
       }).catch(error => {
@@ -58,7 +58,7 @@ class AddBooth extends Component {
       ...previewData
     }
     const {exhibitionId} = this.props.params;
-    axios.post(`http://161.246.5.227:8080/exhibitions/${exhibitionId}/booths/add`, data)
+    axios.post(`http://54.255.222.20:8080/exhibitions/${exhibitionId}/booths/add`, data)
       .then(response => {
         this.setState({openModal: true})
       }).catch(error => {

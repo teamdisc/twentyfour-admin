@@ -30,7 +30,7 @@ class ManageExhibition extends Component {
 
   componentWillMount() {
     const {exhibitionId} = this.props.params;
-    axios.get(`http://161.246.5.227:8080/exhibitions/${exhibitionId}`)
+    axios.get(`http://54.255.222.20:8080/exhibitions/${exhibitionId}`)
       .then(response => {
         const {data} = response;
         this.setState({
@@ -49,7 +49,7 @@ class ManageExhibition extends Component {
           longtitude: data.longtitude
         })
       })
-    axios.get('http://161.246.5.227:8080/exhibitions/categories')
+    axios.get('http://54.255.222.20:8080/exhibitions/categories')
       .then(response => this.setState({catFetched: true, categoryList: response.data}))
   }
 
@@ -59,7 +59,7 @@ class ManageExhibition extends Component {
 
   handleOnSubmit = (data) => {
     const {exhibitionId} = this.props.params;
-    axios.post(`http://161.246.5.227:8080/exhibitions/${exhibitionId}/update`, data)
+    axios.post(`http://54.255.222.20:8080/exhibitions/${exhibitionId}/update`, data)
       .then(response => {
           this.setState({openModal: true})
       }).catch(error => {
