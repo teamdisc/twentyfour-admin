@@ -3,6 +3,12 @@ import { Input, URLInput, FileInput } from '../../Exhibition/BuildingBlocks/Buil
 
 class BoothForm extends Component {
 
+  state = {
+    keywords: this.props.keywords ? this.props.keywords : []
+    // keywords: ["team", "bank", "zhome", "power", "netnaja", "jinjin"]
+    // keywords: "team zhome bank hello netnaja jinjin power"
+  }
+
   handleOnSubmit = e => {
     e.preventDefault();
     const {form} = this;
@@ -33,7 +39,23 @@ class BoothForm extends Component {
     reader.readAsDataURL(file);
   }
 
+  handleOnRemoveKeyword = index => {
+    const keywords = this.state.keywords.filter((k,i) => i != index);
+    this.setState({keywords});
+  }
+
+  handleOnKeyPress = e => {
+    if(e.charCode == 13 || e.charCode == 32) {
+      e.preventDefault();
+      if(e.target.value.length <= 0) { return }
+      const {keywords} = this.state;
+      this.setState({keywords: [...keywords, e.target.value]});
+      e.target.value = '';
+    }
+  }
+
   render() {
+    const {name, description, boothCode, contact} = this.props;
     return (
       <div className="card">
         <div className="card-header">
@@ -49,7 +71,7 @@ class BoothForm extends Component {
                 name="text-input"
                 className="form-control"
                 placeholder="Enter your booth name..."
-                defaultValue={this.props.name}
+                defaultValue={name}
               />
             </Input>
 
@@ -60,7 +82,7 @@ class BoothForm extends Component {
                 rows="5"
                 className="form-control"
                 placeholder="Enter the detail of your booth..."
-                defaultValue={this.props.description}
+                defaultValue={description}
               />
             </Input>
 
@@ -71,7 +93,7 @@ class BoothForm extends Component {
                 name="text-input"
                 className="form-control"
                 placeholder="Enter your booth code..."
-                defaultValue={this.props.boothCode}
+                defaultValue={boothCode}
               />
             </Input>
 
@@ -82,7 +104,7 @@ class BoothForm extends Component {
                 name="nf-email"
                 className="form-control"
                 placeholder="Enter your email..."
-                defaultValue={this.props.contact.email}
+                defaultValue={contact ? contact.email : null}
               />
             </Input>
 
@@ -93,7 +115,7 @@ class BoothForm extends Component {
                 name="nf-tel"
                 className="form-control"
                 placeholder="Enter your telephone number..."
-                defaultValue={this.props.contact.mobileNo}
+                defaultValue={contact ? contact.mobileNo : null}
               />
             </Input>
 
@@ -104,7 +126,7 @@ class BoothForm extends Component {
                 name="text-input"
                 className="form-control"
                 placeholder="Enter your Facebook name..."
-                defaultValue={this.props.contact.facebook}
+                defaultValue={contact ? contact.facebook : null}
               />
             </Input>
 
@@ -115,7 +137,15 @@ class BoothForm extends Component {
                 name="text-input"
                 className="form-control"
                 placeholder="Enter your Facebook URL..."
-                defaultValue={this.props.contact.facebookUrl}
+                defaultValue={contact ? contact.facebookUrl : null}
+              />
+            </Input>
+
+            <Input title="Keyword">
+              <KeywordInput
+                keywords={this.state.keywords}
+                onRemoveKeyword={this.handleOnRemoveKeyword}
+                onKeyPress={this.handleOnKeyPress}
               />
             </Input>
 
@@ -135,6 +165,28 @@ class BoothForm extends Component {
     )
   }
 
+}
+
+const Keyword = ({text, onRemove}) => {
+  return (
+    <div className="keyword">
+      {text} <i className="fa fa-close" onClick={onRemove}/>
+    </div>
+  );
+}
+
+const KeywordInput = ({keywords, onRemoveKeyword, onKeyPress}) => {
+  return (
+    <div className="keyword-input form-control" onClick={e => e.target.lastChild.focus()}>
+      {keywords.map((kw,i) =>
+        <Keyword
+          text={kw}
+          onRemove={() => onRemoveKeyword(i)}
+        />
+      )}
+      <input onKeyPress={onKeyPress}/>
+    </div>
+  );
 }
 
 export default BoothForm;

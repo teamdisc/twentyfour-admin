@@ -8868,3 +8868,34 @@ header.navbar .navbar-brand {
     background-color: #f2f2f2; }
   .list-group .list-group-item.active:hover {
     background-color: #2da68f; }
+
+.btn {
+  cursor: pointer; }
+
+.btn-orange {
+  color: white;
+  background-color: #e68e50;
+  border-color: #e68e50; }
+
+.btn-orange:hover {
+  background-color: #e07123;
+  border-color: #e07123; }
+
+.keyword-input {
+  display: inline-block;
+  cursor: text; }
+  .keyword-input .keyword {
+    background-color: #eceff1;
+    padding: 6px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-right: 4px;
+    margin-bottom: 4px; }
+  .keyword-input i {
+    margin-left: 2px;
+    cursor: pointer; }
+  .keyword-input input {
+    outline: none;
+    border: none;
+    font-size: 0.875rem;
+    color: #607d8b; }

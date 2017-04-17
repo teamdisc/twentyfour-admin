@@ -66,26 +66,9 @@ header.navbar .navbar-brand {
   background-size: 110px auto;
 }
 
-//Custom a
+//List group
 
 .list-group {
-
-  // a:not([href]):not([tabindex]) {
-  //   color: #32baa0;
-  //   cursor: pointer;
-  // }
-  //
-  // a:not([href]):not([tabindex]):hover {
-  //   color: darken(#32baa0, 20%);
-  // }
-  //
-  // .list-group-item.active {
-  //   color: white !important;
-  // }
-  //
-  // .list-group-item.active:hover {
-  //   color: darken(white, 20%) !important;
-  // }
 
   color: #32baa0;
   cursor: pointer;
@@ -100,6 +83,53 @@ header.navbar .navbar-brand {
 
   .list-group-item.active:hover {
     background-color: darken(#32baa0, 5%);
+  }
+
+}
+
+//Button style
+
+.btn {
+  cursor: pointer;
+}
+
+.btn-orange {
+  color: white;
+  background-color: #e68e50;
+  border-color: #e68e50;
+}
+
+.btn-orange:hover {
+  background-color: darken(#e68e50, 10%);
+  border-color: darken(#e68e50, 10%);
+}
+
+//Keyword in BoothForm
+
+.keyword-input {
+
+  display: inline-block;
+  cursor: text;
+
+  .keyword {
+    background-color: #eceff1;
+    padding: 6px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+
+  i {
+    margin-left: 2px;
+    cursor: pointer;
+  }
+
+  input {
+    outline: none;
+    border: none;
+    font-size: 0.875rem;
+    color: #607d8b;
   }
 
 }
