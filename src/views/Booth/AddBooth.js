@@ -47,6 +47,7 @@ class AddBooth extends Component {
       mobileNo: boothForm.form['booth-tel-input'].value,
       facebook: boothForm.form['booth-facebook-input'].value,
       facebookUrl: boothForm.form['booth-facebook-url-input'].value,
+      keywords: boothForm.state.keywords.reduce((acc,key) => acc + ' ' + key)
     }
   }
 

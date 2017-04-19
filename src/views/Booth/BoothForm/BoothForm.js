@@ -4,7 +4,8 @@ import { Input, URLInput, FileInput } from '../../Exhibition/BuildingBlocks/Buil
 class BoothForm extends Component {
 
   state = {
-    keywords: this.props.keywords ? this.props.keywords : []
+    // keywords: this.props.keywords ? this.props.keywords : []
+    keywords: this.props.keywords ? this.props.keywords.split(' ') : []
     // keywords: ["team", "bank", "zhome", "power", "netnaja", "jinjin"]
     // keywords: "team zhome bank hello netnaja jinjin power"
   }
@@ -20,6 +21,7 @@ class BoothForm extends Component {
       mobileNo: form['booth-tel-input'].value,
       facebook: form['booth-facebook-input'].value,
       facebookUrl: form['booth-facebook-url-input'].value,
+      keywords: this.state.keywords.reduce((acc,key) => acc + ' ' + key)
     }
     this.props.onSubmit(data)
   }
